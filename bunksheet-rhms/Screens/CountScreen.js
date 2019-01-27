@@ -54,21 +54,6 @@ class CountScreen extends Component {
         });
         });
 
-        /*
-      fetch(url)
-        .then(res => res.json())
-        .then(res => {
-          this.setState({
-            //data: res.results,
-            count: res.count,
-            error: res.error || null,
-            isAuthenticating: false,
-          });
-      //this.arrayHolder = res.results;
-        })
-      .catch(error => {
-      this.setState({ error, isAuthenticating: false });
-      });*/
     };
 
     renderLibraryStatus = () => {

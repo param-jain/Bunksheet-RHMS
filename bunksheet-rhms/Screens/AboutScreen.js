@@ -89,7 +89,7 @@ const styles = {
         color: '#FA9800'
     },
     info: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: "500",
         marginBottom: 0,
         textAlign: 'center',
