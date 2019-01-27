@@ -17,7 +17,7 @@ class CountScreen extends Component {
         this.state = {
             errorMessage: '',
             count: 0,
-            peopleIn: 150,
+            peopleIn: 0,
             totalSeats: 250,
             isAuthenticating: false
         }
@@ -27,10 +27,34 @@ class CountScreen extends Component {
         this.onRefreshPress();
     }
 
-    onRefreshPress = () => {
-        const url = `https://mighty-hollows-23016.herokuapp.com/cc/getAllBooksCount`;
+    async onRefreshPress() {
+        const url = `https://hidden-escarpment-80879.herokuapp.com/graphql`;
         this.setState({ isAuthenticating: true });
 
+        const axios = require("axios")
+        axios({
+            url: url,
+            method: 'post',
+            data: {
+            query: `               
+                query{
+                    getCount{
+                    live_count,
+                    total_count
+                    }
+                }
+                `
+            }
+        }).then((result) => {
+            const data = result.data.data.getCount;
+        this.setState({
+            peopleIn: data.live_count,
+            totalSeats: data.total_count,
+            isAuthenticating: false
+        });
+        });
+
+        /*
       fetch(url)
         .then(res => res.json())
         .then(res => {
@@ -44,7 +68,7 @@ class CountScreen extends Component {
         })
       .catch(error => {
       this.setState({ error, isAuthenticating: false });
-      });
+      });*/
     };
 
     renderLibraryStatus = () => {
