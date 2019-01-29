@@ -11,6 +11,17 @@ const MainNavigator = createBottomTabNavigator({
   aboutScreen: { screen: AboutScreen }
 });
 
-const App = createAppContainer(MainNavigator);
+const Mania = createAppContainer(MainNavigator);
+
+class App extends React.Component {
+  render() {
+    return(
+      <View style={{ backgroundColor: 'white', flex: 1 }}>
+        <Mania />
+      </View>
+    );
+
+  }
+}
 
 export default App;
